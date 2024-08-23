@@ -7,7 +7,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png') }}">
     <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
     <title>
-        Black Dashboard PRO by Creative Tim
+        {{env('APP_NAME')|'WebGis Desa Kupang'}}
     </title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
@@ -107,18 +107,85 @@
             iconUrl: '{{ asset('assets/img/healtico.png') }}',
             iconSize: [32, 32],
         })
-
+        
         @foreach($tempats as $temp)
             @if($temp->Kategori_id == "1")
                 let sekolah{{ $temp->id }} = L.marker([{{ $temp->latitude }}, {{ $temp->longitude }}], {icon: sekolahIcon}).bindPopup('{{ $temp->nama_tempat }}')
             @endif
         @endforeach
-
+        
         @foreach($tempats as $temp)
             @if ($temp->Kategori_id == "2")
                 let masjid{{ $temp->id }} = L.marker([{{ $temp->latitude }}, {{ $temp->longitude }}], {icon: masjidIcon}).bindPopup('{{ $temp->nama_tempat }}')
             @endif
         @endforeach
+
+        @foreach($tempats as $temp)
+        @if($temp->Kategori_id == "3")
+                let tpq{{ $temp->id }} = L.marker([{{ $temp->latitude }}, {{ $temp->longitude }}], {icon: sekolahIcon}).bindPopup('{{ $temp->nama_tempat }}')
+            @endif
+        @endforeach
+
+        @foreach($tempats as $temp)
+            @if($temp->Kategori_id == "4")
+                let bumdes{{ $temp->id }} = L.marker([{{ $temp->latitude }}, {{ $temp->longitude }}], {icon: sekolahIcon}).bindPopup('{{ $temp->nama_tempat }}')
+            @endif
+        @endforeach
+
+        @foreach($tempats as $temp)
+            @if($temp->Kategori_id == "5")
+                let wisata{{ $temp->id }} = L.marker([{{ $temp->latitude }}, {{ $temp->longitude }}], {icon: sekolahIcon}).bindPopup('{{ $temp->nama_tempat }}')
+            @endif
+        @endforeach
+
+        @foreach($tempats as $temp)
+            @if($temp->Kategori_id == "6")
+                let polsek{{ $temp->id }} = L.marker([{{ $temp->latitude }}, {{ $temp->longitude }}], {icon: sekolahIcon}).bindPopup('{{ $temp->nama_tempat }}')
+            @endif
+        @endforeach
+
+        @foreach($tempats as $temp)
+            @if($temp->Kategori_id == "7")
+                let puskesmas{{ $temp->id }} = L.marker([{{ $temp->latitude }}, {{ $temp->longitude }}], {icon: sekolahIcon}).bindPopup('{{ $temp->nama_tempat }}')
+            @endif
+        @endforeach
+
+        @foreach($tempats as $temp)
+            @if($temp->Kategori_id == "8")
+                let kantordesa{{ $temp->id }} = L.marker([{{ $temp->latitude }}, {{ $temp->longitude }}], {icon: sekolahIcon}).bindPopup('{{ $temp->nama_tempat }}')
+            @endif
+        @endforeach
+
+        @foreach($tempats as $temp)
+            @if($temp->Kategori_id == "9")
+                let halte{{ $temp->id }} = L.marker([{{ $temp->latitude }}, {{ $temp->longitude }}], {icon: sekolahIcon}).bindPopup('{{ $temp->nama_tempat }}')
+            @endif
+        @endforeach
+
+        @foreach($tempats as $temp)
+            @if($temp->Kategori_id == "10")
+                let bank{{ $temp->id }} = L.marker([{{ $temp->latitude }}, {{ $temp->longitude }}], {icon: sekolahIcon}).bindPopup('{{ $temp->nama_tempat }}')
+            @endif
+        @endforeach
+
+        @foreach($tempats as $temp) 
+            @if($temp->Kategori_id == "11")
+                let minimarket{{ $temp->id }} = L.marker([{{ $temp->latitude }}, {{ $temp->longitude }}], {icon: sekolahIcon}).bindPopup('{{ $temp->nama_tempat }}')
+            @endif
+        @endforeach
+
+        @foreach($tempats as $temp) 
+            @if($temp->Kategori_id == "12")
+                let tps3r{{ $temp->id }} = L.marker([{{ $temp->latitude }}, {{ $temp->longitude }}], {icon: sekolahIcon}).bindPopup('{{ $temp->nama_tempat }}')
+            @endif
+        @endforeach
+
+        @foreach($tempats as $temp) 
+            @if($temp->Kategori_id == "11")
+                let umkm{{ $temp->id }} = L.marker([{{ $temp->latitude }}, {{ $temp->longitude }}], {icon: sekolahIcon}).bindPopup('{{ $temp->nama_tempat }}')
+            @endif
+        @endforeach
+
 
         let baseLayer = {
             'OpenStreetMap': osm,
@@ -141,6 +208,83 @@
             @endif
             @endforeach
         ]);
+        let tpq = L.layerGroup([
+            @foreach ($tempats as $temp)
+            @if ($temp->Kategori_id == 3)
+            tpq{{ $temp->id }},
+            @endif
+            @endforeach
+        ]);
+        let bumdes = L.layerGroup([
+            @foreach ($tempats as $temp)
+            @if ($temp->Kategori_id == 4)
+            bumdes{{ $temp->id }},
+            @endif
+            @endforeach
+        ]);
+        let wisata = L.layerGroup([
+            @foreach ($tempats as $temp)
+            @if ($temp->Kategori_id == 5)
+            wisata{{ $temp->id }},
+            @endif
+            @endforeach
+        ]);
+        let polsek = L.layerGroup([
+            @foreach ($tempats as $temp)
+            @if ($temp->Kategori_id == 6)
+            polsek{{ $temp->id }},
+            @endif
+            @endforeach
+        ]);
+        let puskesmas = L.layerGroup([
+            @foreach ($tempats as $temp)
+            @if ($temp->Kategori_id == 7)
+            puskesmas{{ $temp->id }},
+            @endif
+            @endforeach
+        ]);
+        let kantordesa = L.layerGroup([
+            @foreach ($tempats as $temp)
+            @if ($temp->Kategori_id == 8)
+            kantordesa{{ $temp->id }},
+            @endif
+            @endforeach
+        ]);
+        let halte = L.layerGroup([
+            @foreach ($tempats as $temp)
+            @if ($temp->Kategori_id == 9)
+            halte{{ $temp->id }},
+            @endif
+            @endforeach
+        ]);
+        let bank = L.layerGroup([
+            @foreach ($tempats as $temp)
+            @if ($temp->Kategori_id == 10)
+            bank{{ $temp->id }},
+            @endif
+            @endforeach
+        ]);
+        let minimarket = L.layerGroup([
+            @foreach ($tempats as $temp)
+            @if ($temp->Kategori_id == 11)
+            minimarket{{ $temp->id }},
+            @endif
+            @endforeach
+        ]);
+        let tps3r = L.layerGroup([
+            @foreach ($tempats as $temp)
+            @if ($temp->Kategori_id == 12)
+            tps3r{{ $temp->id }},
+            @endif
+            @endforeach
+        ]);
+        let umkm = L.layerGroup([
+            @foreach ($tempats as $temp)
+            @if ($temp->Kategori_id == 13)
+            umkm{{ $temp->id }},
+            @endif
+            @endforeach
+        ]);
         
         let map = L.map('map', {
             layers: [osm],
@@ -149,7 +293,18 @@
         })
         overlayMaps = {
             'Sekolah': sekolah,
-            'Masjid': masjid
+            'Masjid': masjid,
+            'TPQ':tpq,
+            'BUMDes':bumdes,
+            'Wisata':wisata,
+            'Polsek':polsek,
+            'Puskesmas':puskesmas,
+            'Kantor Desa': kantordesa,
+            'Halte':halte,
+            'Bank':bank,
+            'Mini Market':minimarket,
+            'TPS3R':tps3r,
+            'UMKM':umkm
         }
 
         L.control.layers(baseLayer, overlayMaps).addTo(map);
